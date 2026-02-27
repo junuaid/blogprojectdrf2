@@ -1,23 +1,6 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
 
-echo "Finding deployment directory..."
-
-DEPLOY_DIR=$(find /opt/codedeploy-agent/deployment-root -type d -name deployment-archive | head -n 1)
-
-echo "Deployment directory is: $DEPLOY_DIR"
-
-cd $DEPLOY_DIR
-
-echo "Now inside:"
-pwd
-
-echo "Creating virtual environment..."
-python3 -m venv venv
-
-source venv/bin/activate
-
-pip install --upgrade pip
-pip install -r requirements.txt
-
-echo "Python dependencies installed successfully!"
+sudo chown -R ubuntu:ubuntu ~/Project_folder_name
+virtualenv /home/ubuntu/Project_folder_name/venv
+source /home/ubuntu/Project_folder_name/venv/bin/activate
+pip install -r /home/ubuntu/Project_folder_name/requirements.txt
