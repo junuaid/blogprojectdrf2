@@ -4,15 +4,14 @@ set -e
 
 echo "Moving to deployment directory..."
 
-# Go to project root (CodeDeploy archive location)
-cd /opt/codedeploy-agent/deployment-root///deployment-archive
+# CodeDeploy automatically sets this variable
+cd "$PWD"
 
 echo "Current directory:"
 pwd
 ls
 
 echo "Creating virtual environment..."
-
 python3 -m venv venv
 
 echo "Activating virtual environment..."
