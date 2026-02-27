@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
 
-sudo chown -R ubuntu:ubuntu ~/Project_folder_name
-virtualenv /home/ubuntu/Project_folder_name/venv
-source /home/ubuntu/Project_folder_name/venv/bin/activate
-pip install -r /home/ubuntu/Project_folder_name/requirements.txt
+echo "Updating packages..."
+apt-get update -y
+
+echo "Installing Python dependencies..."
+apt-get install -y python3-pip python3-venv
