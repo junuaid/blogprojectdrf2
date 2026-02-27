@@ -1,6 +1,21 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
 
-sudo chown -R ubuntu:ubuntu ~/Project_folder_name
-virtualenv /home/ubuntu/Project_folder_name/venv
-source /home/ubuntu/Project_folder_name/venv/bin/activate
-pip install -r /home/ubuntu/Project_folder_name/requirements.txt
+APP_DIR="/home/ubuntu/app"
+
+echo "Moving to app directory..."
+cd $APP_DIR
+
+echo "Creating virtual environment..."
+python3 -m venv venv
+
+echo "Activating venv..."
+source venv/bin/activate
+
+echo "Upgrading pip..."
+pip install --upgrade pip
+
+echo "Installing dependencies..."
+pip install -r requirements.txt
+
+echo "Dependencies installed successfully!"
