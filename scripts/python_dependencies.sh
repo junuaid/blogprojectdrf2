@@ -1,22 +1,23 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 set -e
 
-echo "Moving to deployment directory..."
+echo "Finding deployment directory..."
 
-cd /opt/codedeploy-agent/deployment-root/*/deployment-archive
+DEPLOY_DIR=$(find /opt/codedeploy-agent/deployment-root -type d -name deployment-archive | head -n 1)
+
+echo "Deployment directory is: $DEPLOY_DIR"
+
+cd $DEPLOY_DIR
+
+echo "Now inside:"
+pwd
 
 echo "Creating virtual environment..."
-
 python3 -m venv venv
 
-echo "Activating virtual environment..."
-
 source venv/bin/activate
-
-echo "Installing dependencies..."
 
 pip install --upgrade pip
 pip install -r requirements.txt
 
-echo "Dependencies installed successfully!"
+echo "Python dependencies installed successfully!"
